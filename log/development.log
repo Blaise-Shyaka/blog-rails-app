@@ -1330,3 +1330,54 @@ Processing by ArticlesController#index as HTML
 Completed 200 OK in 12ms (Views: 10.0ms | ActiveRecord: 0.4ms | Allocations: 4437)
 
 
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from load at /home/blaise/.rbenv/versions/2.7.1/bin/rake:23)
+Started GET "/articles" for ::1 at 2020-11-03 18:06:50 +0200
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (15.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:4
+  Rendered articles/index.html.erb within layouts/application (Duration: 49.7ms | Allocations: 4446)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 289ms (Views: 190.3ms | ActiveRecord: 16.6ms | Allocations: 11656)
+
+
+Started GET "/" for ::1 at 2020-11-03 18:06:58 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/blaise/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/blaise/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 45.8ms | Allocations: 190)
+Completed 200 OK in 168ms (Views: 61.4ms | ActiveRecord: 0.0ms | Allocations: 1000)
+
+
+Started GET "/" for ::1 at 2020-11-03 18:07:19 +0200
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/blaise/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/blaise/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 11.8ms | Allocations: 295)
+Completed 200 OK in 26ms (Views: 15.2ms | ActiveRecord: 0.0ms | Allocations: 1790)
+
+
+Started GET "/" for ::1 at 2020-11-03 18:07:21 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/blaise/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/blaise/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 8.4ms | Allocations: 179)
+Completed 200 OK in 11ms (Views: 9.3ms | ActiveRecord: 0.0ms | Allocations: 931)
+
+
+Started GET "/" for ::1 at 2020-11-03 18:07:22 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/blaise/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/blaise/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.8ms | Allocations: 8)
+Completed 200 OK in 12ms (Views: 9.3ms | ActiveRecord: 0.0ms | Allocations: 447)
+
+
+Started GET "/" for ::1 at 2020-11-03 18:07:23 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/blaise/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/blaise/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.4ms | Allocations: 8)
+Completed 200 OK in 5ms (Views: 2.1ms | ActiveRecord: 0.0ms | Allocations: 448)
+
+
