@@ -3528,3 +3528,1064 @@ Processing by TagsController#index as HTML
 Completed 200 OK in 14ms (Views: 12.9ms | ActiveRecord: 0.3ms | Allocations: 4498)
 
 
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddPaperclipFieldsToArticle (20201104150504)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.9ms)[0m  [1m[35mALTER TABLE "articles" ADD "image_file_name" varchar[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "articles" ADD "image_content_type" varchar[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "articles" ADD "image_file_size" integer[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "articles" ADD "image_updated_at" datetime[0m
+  [1m[36mprimary::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20201104150504"]]
+  [1m[35m (89.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/articles/" for ::1 at 2020-11-04 17:18:19 +0200
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:4
+  Rendered articles/index.html.erb within layouts/application (Duration: 80.9ms | Allocations: 6761)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/blaise/Documents/Blaise/Microverse/Rails/blog-rails-app/public/packs
+[Webpacker] Hash: 15d1bb7b54cf6326b9ba
+Version: webpack 4.44.2
+Time: 6777ms
+Built at: 11/04/2020 5:18:35 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-9afcbb5693aa87623e69.js    124 KiB  application  [emitted] [immutable]  application
+js/application-9afcbb5693aa87623e69.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-9afcbb5693aa87623e69.js js/application-9afcbb5693aa87623e69.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 749 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+Completed 200 OK in 15220ms (Views: 14645.4ms | ActiveRecord: 1.9ms | Allocations: 33143)
+
+
+Started GET "/articles/1" for ::1 at 2020-11-04 17:19:02 +0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:8:in `show'
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:5
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:12
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:13
+  Rendered collection of articles/_comment.html.erb [3 times] (Duration: 92.1ms | Allocations: 1646)
+  Rendered comments/_form.html.erb (Duration: 22.3ms | Allocations: 1442)
+  Rendered articles/show.html.erb within layouts/application (Duration: 243.9ms | Allocations: 17980)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 323ms (Views: 254.3ms | ActiveRecord: 4.4ms | Allocations: 27984)
+
+
+Started GET "/articles/1/edit" for ::1 at 2020-11-04 17:19:37 +0200
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:32:in `edit'
+  Rendering articles/edit.html.erb within layouts/application
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/models/article.rb:9:in `tag_list'
+  Rendered articles/_form.html.erb (Duration: 57.0ms | Allocations: 4491)
+  Rendered articles/edit.html.erb within layouts/application (Duration: 78.3ms | Allocations: 4767)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 94ms (Views: 88.0ms | ActiveRecord: 0.6ms | Allocations: 8852)
+
+
+Started PATCH "/articles/1" for ::1 at 2020-11-04 17:21:09 +0200
+Processing by ArticlesController#update as HTML
+  Parameters: {"authenticity_token"=>"+bpPKVTKO0YcOpqM7iylydjnFQawkXJUkDDGL4cvWdhmDwgBVJohdcRrBSGm5m7PjMNa4xBirwvU6eU8fzNn/w==", "article"=>{"title"=>"This was our first article # 1", "body"=>"This is the text for my article, woo hoo!", "image"=>#<ActionDispatch::Http::UploadedFile:0x0000556ed59b01b0 @tempfile=#<Tempfile:/tmp/RackMultipart20201104-10930-y0wuf6.png>, @original_filename="Screenshot from 2020-09-23 10-30-06.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"article[image]\"; filename=\"Screenshot from 2020-09-23 10-30-06.png\"\r\nContent-Type: image/png\r\n">, "tag_list"=>"tag2"}, "commit"=>"Update Article", "id"=>"1"}
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:35:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/article.rb:13:in `block in tag_list='
+  [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."name" = ? LIMIT ?[0m  [["name", "tag2"], ["LIMIT", 1]]
+  ↳ app/models/article.rb:13:in `block in tag_list='
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/models/article.rb:14:in `tag_list='
+[paperclip] Trying to link /tmp/RackMultipart20201104-10930-y0wuf6.png to /tmp/7f103860a5436e30db4f9f4dcb6299a320201104-10930-1y5nyac.png
+[paperclip] Trying to link /tmp/7f103860a5436e30db4f9f4dcb6299a320201104-10930-1y5nyac.png to /tmp/7b0bac82e741076ca05b0e345a59e82f20201104-10930-1jmqib3.png
+Command :: file -b --mime '/tmp/7b0bac82e741076ca05b0e345a59e82f20201104-10930-1jmqib3.png'
+[paperclip] Trying to link /tmp/7f103860a5436e30db4f9f4dcb6299a320201104-10930-1y5nyac.png to /tmp/7b0bac82e741076ca05b0e345a59e82f20201104-10930-1smh81n.png
+Command :: file -b --mime '/tmp/7b0bac82e741076ca05b0e345a59e82f20201104-10930-1smh81n.png'
+  [1m[36mArticle Update (0.5ms)[0m  [1m[33mUPDATE "articles" SET "image_file_name" = ?, "image_content_type" = ?, "image_file_size" = ?, "image_updated_at" = ?, "updated_at" = ? WHERE "articles"."id" = ?[0m  [["image_file_name", "Screenshot_from_2020-09-23_10-30-06.png"], ["image_content_type", "image/png"], ["image_file_size", 253340], ["image_updated_at", "2020-11-04 15:21:09.031640"], ["updated_at", "2020-11-04 15:21:09.174363"], ["id", 1]]
+  ↳ app/controllers/articles_controller.rb:36:in `update'
+  [1m[35m (107.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/articles_controller.rb:36:in `update'
+Redirected to http://localhost:3000/articles/1
+Completed 302 Found in 279ms (ActiveRecord: 109.1ms | Allocations: 13287)
+
+
+Started GET "/articles/1" for ::1 at 2020-11-04 17:21:09 +0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:8:in `show'
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:5
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:12
+  [1m[36mComment Load (1.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:13
+  Rendered collection of articles/_comment.html.erb [3 times] (Duration: 3.3ms | Allocations: 245)
+  Rendered comments/_form.html.erb (Duration: 6.8ms | Allocations: 461)
+  Rendered articles/show.html.erb within layouts/application (Duration: 34.2ms | Allocations: 3482)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 55ms (Views: 48.0ms | ActiveRecord: 2.5ms | Allocations: 7564)
+
+
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/articles/1" for ::1 at 2020-11-04 17:24:38 +0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:8:in `show'
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:5
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:12
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:13
+  Rendered collection of articles/_comment.html.erb [3 times] (Duration: 2.4ms | Allocations: 370)
+  Rendered comments/_form.html.erb (Duration: 2.2ms | Allocations: 656)
+  Rendered articles/show.html.erb within layouts/application (Duration: 33.5ms | Allocations: 4511)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 58ms (Views: 50.1ms | ActiveRecord: 1.1ms | Allocations: 9508)
+
+
+Started GET "/articles/1/edit" for ::1 at 2020-11-04 17:26:31 +0200
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:32:in `edit'
+  Rendering articles/edit.html.erb within layouts/application
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/models/article.rb:9:in `tag_list'
+  Rendered articles/_form.html.erb (Duration: 41.4ms | Allocations: 9190)
+  Rendered articles/edit.html.erb within layouts/application (Duration: 43.9ms | Allocations: 9464)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 87ms (Views: 53.7ms | ActiveRecord: 5.0ms | Allocations: 21093)
+
+
+Started PATCH "/articles/1" for ::1 at 2020-11-04 17:27:15 +0200
+Processing by ArticlesController#update as HTML
+  Parameters: {"authenticity_token"=>"qiVuwsgI52fp4TGKs+hVIz1ytSwKEKf4VPAI5LJWSbI1kCnqyFj9VDGwrif7Ip4laVb6yarjeqcQKSv3Skp3lQ==", "article"=>{"title"=>"This was our first article # 1", "body"=>"This is the text for my article, woo hoo!", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007fd65c009c88 @tempfile=#<Tempfile:/tmp/RackMultipart20201104-10930-dobnsx.xlsm>, @original_filename="PayeAnnexure_1.1.xlsm", @content_type="application/vnd.ms-excel.sheet.macroEnabled.12", @headers="Content-Disposition: form-data; name=\"article[image]\"; filename=\"PayeAnnexure_1.1.xlsm\"\r\nContent-Type: application/vnd.ms-excel.sheet.macroEnabled.12\r\n">, "tag_list"=>"tag2"}, "commit"=>"Update Article", "id"=>"1"}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:35:in `update'
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/article.rb:13:in `block in tag_list='
+  [1m[36mTag Load (0.8ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."name" = ? LIMIT ?[0m  [["name", "tag2"], ["LIMIT", 1]]
+  ↳ app/models/article.rb:13:in `block in tag_list='
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/models/article.rb:14:in `tag_list='
+[paperclip] Trying to link /tmp/RackMultipart20201104-10930-dobnsx.xlsm to /tmp/e0af9053a5c5069b6c5b04821be3507020201104-10930-14ipgk.xlsm
+[paperclip] Trying to link /tmp/e0af9053a5c5069b6c5b04821be3507020201104-10930-14ipgk.xlsm to /tmp/e0af9053a5c5069b6c5b04821be3507020201104-10930-j4h04f.xlsm
+Command :: file -b --mime '/tmp/e0af9053a5c5069b6c5b04821be3507020201104-10930-j4h04f.xlsm'
+[paperclip] Trying to link /tmp/e0af9053a5c5069b6c5b04821be3507020201104-10930-14ipgk.xlsm to /tmp/e0af9053a5c5069b6c5b04821be3507020201104-10930-12giwdk.xlsm
+Command :: file -b --mime '/tmp/e0af9053a5c5069b6c5b04821be3507020201104-10930-12giwdk.xlsm'
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/articles_controller.rb:36:in `update'
+Redirected to http://localhost:3000/articles/1
+Completed 302 Found in 115ms (ActiveRecord: 2.1ms | Allocations: 7193)
+
+
+Started GET "/articles/1" for ::1 at 2020-11-04 17:27:15 +0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:8:in `show'
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:5
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:12
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:13
+  Rendered collection of articles/_comment.html.erb [3 times] (Duration: 2.1ms | Allocations: 250)
+  Rendered comments/_form.html.erb (Duration: 6.1ms | Allocations: 512)
+  Rendered articles/show.html.erb within layouts/application (Duration: 37.4ms | Allocations: 4984)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 80ms (Views: 49.3ms | ActiveRecord: 2.1ms | Allocations: 14045)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/articles/1/edit" for ::1 at 2020-11-04 17:28:22 +0200
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:32:in `edit'
+  Rendering articles/edit.html.erb within layouts/application
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/models/article.rb:9:in `tag_list'
+  Rendered articles/_form.html.erb (Duration: 8.1ms | Allocations: 1976)
+  Rendered articles/edit.html.erb within layouts/application (Duration: 11.7ms | Allocations: 2037)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 30ms (Views: 26.8ms | ActiveRecord: 0.3ms | Allocations: 6072)
+
+
+Started PATCH "/articles/1" for ::1 at 2020-11-04 17:28:33 +0200
+Processing by ArticlesController#update as HTML
+  Parameters: {"authenticity_token"=>"y8xisSNSSfYMF+EIteWj1/lrHEzEcZPmzWACgouF1FJUeSWZIwJTxdRGfqX9L2jRrU9TqWSCTrmJuSGRc5nqdQ==", "article"=>{"title"=>"This was our first article # 1", "body"=>"This is the text for my article, woo hoo!", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007fd6750282c8 @tempfile=#<Tempfile:/tmp/RackMultipart20201104-10930-1u5qkao.png>, @original_filename="carbon (4).png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"article[image]\"; filename=\"carbon (4).png\"\r\nContent-Type: image/png\r\n">, "tag_list"=>"tag2"}, "commit"=>"Update Article", "id"=>"1"}
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:35:in `update'
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/article.rb:13:in `block in tag_list='
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."name" = ? LIMIT ?[0m  [["name", "tag2"], ["LIMIT", 1]]
+  ↳ app/models/article.rb:13:in `block in tag_list='
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/models/article.rb:14:in `tag_list='
+[paperclip] Trying to link /tmp/RackMultipart20201104-10930-1u5qkao.png to /tmp/770071fb61f0226d5a8a37d7cde3394720201104-10930-6wddxo.png
+[paperclip] Trying to link /tmp/770071fb61f0226d5a8a37d7cde3394720201104-10930-6wddxo.png to /tmp/682e8fac2d96928bb2329830bf0da82420201104-10930-1q0n9o9.png
+Command :: file -b --mime '/tmp/682e8fac2d96928bb2329830bf0da82420201104-10930-1q0n9o9.png'
+[paperclip] Trying to link /tmp/770071fb61f0226d5a8a37d7cde3394720201104-10930-6wddxo.png to /tmp/682e8fac2d96928bb2329830bf0da82420201104-10930-oom09w.png
+Command :: file -b --mime '/tmp/682e8fac2d96928bb2329830bf0da82420201104-10930-oom09w.png'
+  [1m[36mArticle Update (0.7ms)[0m  [1m[33mUPDATE "articles" SET "image_file_name" = ?, "image_file_size" = ?, "image_updated_at" = ?, "updated_at" = ? WHERE "articles"."id" = ?[0m  [["image_file_name", "carbon_(4).png"], ["image_file_size", 51915], ["image_updated_at", "2020-11-04 15:28:33.739834"], ["updated_at", "2020-11-04 15:28:33.752517"], ["id", 1]]
+  ↳ app/controllers/articles_controller.rb:36:in `update'
+[paperclip] deleting /home/blaise/Documents/Blaise/Microverse/Rails/blog-rails-app/public/system/articles/images/000/000/001/original/Screenshot_from_2020-09-23_10-30-06.png
+  [1m[35m (90.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/articles_controller.rb:36:in `update'
+Redirected to http://localhost:3000/articles/1
+Completed 302 Found in 142ms (ActiveRecord: 92.6ms | Allocations: 12801)
+
+
+Started GET "/articles/1" for ::1 at 2020-11-04 17:28:33 +0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:8:in `show'
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:5
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:12
+  [1m[36mComment Load (3.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:13
+  Rendered collection of articles/_comment.html.erb [3 times] (Duration: 1.2ms | Allocations: 245)
+  Rendered comments/_form.html.erb (Duration: 1.9ms | Allocations: 460)
+  Rendered articles/show.html.erb within layouts/application (Duration: 16.6ms | Allocations: 3646)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 35ms (Views: 27.9ms | ActiveRecord: 3.9ms | Allocations: 7726)
+
+
+Started GET "/articles/1" for ::1 at 2020-11-04 17:33:06 +0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:8:in `show'
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:5
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:12
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:13
+  Rendered collection of articles/_comment.html.erb [3 times] (Duration: 2.8ms | Allocations: 365)
+  Rendered comments/_form.html.erb (Duration: 7.8ms | Allocations: 656)
+  Rendered articles/show.html.erb within layouts/application (Duration: 25.2ms | Allocations: 4510)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 46ms (Views: 39.6ms | ActiveRecord: 1.1ms | Allocations: 9481)
+
+
+Started GET "/articles/1/edit" for ::1 at 2020-11-04 17:33:14 +0200
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:32:in `edit'
+  Rendering articles/edit.html.erb within layouts/application
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/models/article.rb:9:in `tag_list'
+  Rendered articles/_form.html.erb (Duration: 12.6ms | Allocations: 2724)
+  Rendered articles/edit.html.erb within layouts/application (Duration: 13.9ms | Allocations: 2998)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 31ms (Views: 26.1ms | ActiveRecord: 0.5ms | Allocations: 7170)
+
+
+Started GET "/articles/" for ::1 at 2020-11-04 17:34:01 +0200
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:4
+  Rendered articles/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1260)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 38ms (Views: 36.8ms | ActiveRecord: 0.2ms | Allocations: 4908)
+
+
+Started GET "/articles/4" for ::1 at 2020-11-04 17:34:03 +0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:8:in `show'
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 4]]
+  ↳ app/views/articles/show.html.erb:5
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 4]]
+  ↳ app/views/articles/show.html.erb:12
+  Rendered collection of articles/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered comments/_form.html.erb (Duration: 1.7ms | Allocations: 472)
+  Rendered articles/show.html.erb within layouts/application (Duration: 8.5ms | Allocations: 2531)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 26ms (Views: 23.1ms | ActiveRecord: 0.6ms | Allocations: 6581)
+
+
+Started GET "/images/original/missing.png" for ::1 at 2020-11-04 17:34:03 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/images/original/missing.png"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/articles/4/edit" for ::1 at 2020-11-04 17:34:11 +0200
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:32:in `edit'
+  Rendering articles/edit.html.erb within layouts/application
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 4]]
+  ↳ app/models/article.rb:9:in `tag_list'
+  Rendered articles/_form.html.erb (Duration: 13.1ms | Allocations: 2023)
+  Rendered articles/edit.html.erb within layouts/application (Duration: 13.9ms | Allocations: 2084)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 36ms (Views: 32.5ms | ActiveRecord: 0.5ms | Allocations: 6186)
+
+
+Started GET "/images/original/missing.png" for ::1 at 2020-11-04 17:34:12 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/images/original/missing.png"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/articles/4/edit" for ::1 at 2020-11-04 17:34:25 +0200
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mArticle Load (0.9ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:32:in `edit'
+  Rendering articles/edit.html.erb within layouts/application
+  [1m[36mTag Load (2.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 4]]
+  ↳ app/models/article.rb:9:in `tag_list'
+  Rendered articles/_form.html.erb (Duration: 8.2ms | Allocations: 1979)
+  Rendered articles/edit.html.erb within layouts/application (Duration: 8.6ms | Allocations: 2040)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 35ms (Views: 20.9ms | ActiveRecord: 3.2ms | Allocations: 6082)
+
+
+Started GET "/articles/4" for ::1 at 2020-11-04 17:34:28 +0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mArticle Load (3.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:8:in `show'
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 4]]
+  ↳ app/views/articles/show.html.erb:5
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 4]]
+  ↳ app/views/articles/show.html.erb:12
+  Rendered collection of articles/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered comments/_form.html.erb (Duration: 2.9ms | Allocations: 469)
+  Rendered articles/show.html.erb within layouts/application (Duration: 18.9ms | Allocations: 2532)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 44ms (Views: 35.0ms | ActiveRecord: 4.4ms | Allocations: 6582)
+
+
+Started GET "/images/original/missing.png" for ::1 at 2020-11-04 17:34:28 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/images/original/missing.png"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/articles/" for ::1 at 2020-11-04 17:34:33 +0200
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:4
+  Rendered articles/index.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1074)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 26ms (Views: 24.4ms | ActiveRecord: 0.3ms | Allocations: 4606)
+
+
+Started GET "/images/original/missing.png" for ::1 at 2020-11-04 17:34:33 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/images/original/missing.png"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/articles/1" for ::1 at 2020-11-04 17:34:34 +0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:8:in `show'
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:5
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:12
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:13
+  Rendered collection of articles/_comment.html.erb [3 times] (Duration: 2.0ms | Allocations: 246)
+  Rendered comments/_form.html.erb (Duration: 2.9ms | Allocations: 460)
+  Rendered articles/show.html.erb within layouts/application (Duration: 20.4ms | Allocations: 3653)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 38ms (Views: 30.9ms | ActiveRecord: 1.4ms | Allocations: 7724)
+
+
+Started GET "/articles/4" for ::1 at 2020-11-04 17:34:39 +0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:8:in `show'
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 4]]
+  ↳ app/views/articles/show.html.erb:5
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 4]]
+  ↳ app/views/articles/show.html.erb:12
+  Rendered collection of articles/_comment.html.erb [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered comments/_form.html.erb (Duration: 1.8ms | Allocations: 469)
+  Rendered articles/show.html.erb within layouts/application (Duration: 30.1ms | Allocations: 2524)
+Started GET "/images/original/missing.png" for ::1 at 2020-11-04 17:34:39 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+ActionController::RoutingError (No route matches [GET] "/images/original/missing.png"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 116ms (Views: 112.1ms | ActiveRecord: 1.2ms | Allocations: 32765)
+
+
+Started GET "/articles/4" for ::1 at 2020-11-04 17:36:44 +0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:8:in `show'
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (Duration: 33.9ms | Allocations: 1198)
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 0.5ms | Allocations: 2979)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <h1><%= @article.title %></h1>
+
+<p>
+  Tags:
+  <% @article.tags.each do |tag| %>
+    <%= link_to tag.name, tag_path(tag) %>
+  <% end %>
+</p>
+
+<p>
+  <%if @article.image.exists?%>
+    <%= image_tag @article.image.url %>
+  <%end>
+</p>
+<p><%= @article.body %></p>
+<h3>Comments (<%= @article.comments.size %>)</h3>
+<%= render partial: 'articles/comment', collection: @article.comments %>
+<%= render partial: 'comments/form' %>
+
+<%= link_to "<< Back to Articles List", articles_path %>
+<br>
+<%= link_to "delete", article_path(@article), method: :delete, data: {confirm: "Really delete the article?"} %>
+
+<%= link_to "edit", edit_article_path(@article) %>
+):
+1:    <h1><%= @article.title %></h1>
+2:    
+3:    <p>
+4:      Tags:
+5:      <% @article.tags.each do |tag| %>
+6:        <%= link_to tag.name, tag_path(tag) %>
+7:      <% end %>
+8:    </p>
+9:    
+10:    <p>
+11:      <%if @article.image.exists?%>
+12:        <%= image_tag @article.image.url %>
+13:      <%end>
+14:    </p>
+15:    <p><%= @article.body %></p>
+16:    <h3>Comments (<%= @article.comments.size %>)</h3>
+17:    <%= render partial: 'articles/comment', collection: @article.comments %>
+18:    <%= render partial: 'comments/form' %>
+19:    
+20:    <%= link_to "<< Back to Articles List", articles_path %>
+21:    <br>
+22:    <%= link_to "delete", article_path(@article), method: :delete, data: {confirm: "Really delete the article?"} %>
+23:    
+24:    <%= link_to "edit", edit_article_path(@article) %>
+  
+app/views/articles/show.html.erb:14: syntax error, unexpected '<'
+app/views/articles/show.html.erb:15: unknown regexp option - p
+app/views/articles/show.html.erb:16: syntax error, unexpected '<'
+app/views/articles/show.html.erb:16: syntax error, unexpected ( arg, expecting `do' or '{' or '('
+app/views/articles/show.html.erb:17: unknown regexp options - ct
+app/views/articles/show.html.erb:17: end pattern with unmatched parenthesis: /h3>
+app/views/articles/show.html.erb:17: syntax error, unexpected string literal, expecting `end'
+app/views/articles/show.html.erb:18: syntax error, unexpected local variable or method, expecting `end'
+app/views/articles/show.html.erb:18: syntax error, unexpected string literal, expecting `do' or '{' or '('
+app/views/articles/show.html.erb:21: syntax error, unexpected '<', expecting `end'
+app/views/articles/show.html.erb:26: unterminated string meets end of file
+app/views/articles/show.html.erb:26: syntax error, unexpected end-of-input, expecting `end'
+app/views/articles/show.html.erb:14: syntax error, unexpected '<'
+app/views/articles/show.html.erb:15: unknown regexp option - p
+app/views/articles/show.html.erb:16: syntax error, unexpected '<'
+app/views/articles/show.html.erb:16: syntax error, unexpected ( arg, expecting `do' or '{' or '('
+app/views/articles/show.html.erb:17: unknown regexp options - ct
+app/views/articles/show.html.erb:17: end pattern with unmatched parenthesis: /h3>
+app/views/articles/show.html.erb:17: syntax error, unexpected string literal, expecting `end'
+app/views/articles/show.html.erb:18: syntax error, unexpected local variable or method, expecting `end'
+app/views/articles/show.html.erb:18: syntax error, unexpected string literal, expecting `do' or '{' or '('
+app/views/articles/show.html.erb:21: syntax error, unexpected '<', expecting `end'
+app/views/articles/show.html.erb:26: unterminated string meets end of file
+app/views/articles/show.html.erb:26: syntax error, unexpected end-of-input, expecting `end'
+app/views/articles/show.html.erb:14: syntax error, unexpected '<'
+app/views/articles/show.html.erb:15: unknown regexp option - p
+app/views/articles/show.html.erb:16: syntax error, unexpected '<'
+app/views/articles/show.html.erb:16: syntax error, unexpected ( arg, expecting `do' or '{' or '('
+app/views/articles/show.html.erb:17: unknown regexp options - ct
+app/views/articles/show.html.erb:17: end pattern with unmatched parenthesis: /h3>
+app/views/articles/show.html.erb:17: syntax error, unexpected string literal, expecting `end'
+app/views/articles/show.html.erb:18: syntax error, unexpected local variable or method, expecting `end'
+app/views/articles/show.html.erb:18: syntax error, unexpected string literal, expecting `do' or '{' or '('
+app/views/articles/show.html.erb:21: syntax error, unexpected '<', expecting `end'
+app/views/articles/show.html.erb:26: unterminated string meets end of file
+app/views/articles/show.html.erb:26: syntax error, unexpected end-of-input, expecting `end'
+app/views/articles/show.html.erb:14: syntax error, unexpected '<'
+app/views/articles/show.html.erb:15: unknown regexp option - p
+app/views/articles/show.html.erb:16: syntax error, unexpected '<'
+app/views/articles/show.html.erb:16: syntax error, unexpected ( arg, expecting `do' or '{' or '('
+app/views/articles/show.html.erb:17: unknown regexp options - ct
+app/views/articles/show.html.erb:17: end pattern with unmatched parenthesis: /h3>
+app/views/articles/show.html.erb:17: syntax error, unexpected string literal, expecting `end'
+app/views/articles/show.html.erb:18: syntax error, unexpected local variable or method, expecting `end'
+app/views/articles/show.html.erb:18: syntax error, unexpected string literal, expecting `do' or '{' or '('
+app/views/articles/show.html.erb:21: syntax error, unexpected '<', expecting `end'
+app/views/articles/show.html.erb:26: unterminated string meets end of file
+app/views/articles/show.html.erb:26: syntax error, unexpected end-of-input, expecting `end'
+app/views/articles/show.html.erb:14: syntax error, unexpected '<'
+app/views/articles/show.html.erb:15: unknown regexp option - p
+app/views/articles/show.html.erb:16: syntax error, unexpected '<'
+app/views/articles/show.html.erb:16: syntax error, unexpected ( arg, expecting `do' or '{' or '('
+app/views/articles/show.html.erb:17: unknown regexp options - ct
+app/views/articles/show.html.erb:17: end pattern with unmatched parenthesis: /h3>
+app/views/articles/show.html.erb:17: syntax error, unexpected string literal, expecting `end'
+app/views/articles/show.html.erb:18: syntax error, unexpected local variable or method, expecting `end'
+app/views/articles/show.html.erb:18: syntax error, unexpected string literal, expecting `do' or '{' or '('
+app/views/articles/show.html.erb:21: syntax error, unexpected '<', expecting `end'
+app/views/articles/show.html.erb:26: unterminated string meets end of file
+app/views/articles/show.html.erb:26: syntax error, unexpected end-of-input, expecting `end'
+app/views/articles/show.html.erb:14: syntax error, unexpected '<'
+app/views/articles/show.html.erb:15: unknown regexp option - p
+app/views/articles/show.html.erb:16: syntax error, unexpected '<'
+app/views/articles/show.html.erb:16: syntax error, unexpected ( arg, expecting `do' or '{' or '('
+app/views/articles/show.html.erb:17: unknown regexp options - ct
+app/views/articles/show.html.erb:17: end pattern with unmatched parenthesis: /h3>
+app/views/articles/show.html.erb:17: syntax error, unexpected string literal, expecting `end'
+app/views/articles/show.html.erb:18: syntax error, unexpected local variable or method, expecting `end'
+app/views/articles/show.html.erb:18: syntax error, unexpected string literal, expecting `do' or '{' or '('
+app/views/articles/show.html.erb:21: syntax error, unexpected '<', expecting `end'
+app/views/articles/show.html.erb:26: unterminated string meets end of file
+app/views/articles/show.html.erb:26: syntax error, unexpected end-of-input, expecting `end'
+Started GET "/articles/4" for ::1 at 2020-11-04 17:37:15 +0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:8:in `show'
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 4]]
+  ↳ app/views/articles/show.html.erb:5
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 4]]
+  ↳ app/views/articles/show.html.erb:16
+  Rendered collection of articles/_comment.html.erb [0 times] (Duration: 0.2ms | Allocations: 3)
+  Rendered comments/_form.html.erb (Duration: 8.9ms | Allocations: 666)
+  Rendered articles/show.html.erb within layouts/application (Duration: 58.6ms | Allocations: 3242)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 107ms (Views: 101.5ms | ActiveRecord: 2.0ms | Allocations: 8230)
+
+
+Started GET "/articles/" for ::1 at 2020-11-04 17:48:07 +0200
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:4
+  Rendered articles/index.html.erb within layouts/application (Duration: 21.0ms | Allocations: 5929)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 321ms (Views: 245.4ms | ActiveRecord: 0.4ms | Allocations: 12604)
+
+
+Started GET "/articles/1" for ::1 at 2020-11-04 17:48:12 +0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:8:in `show'
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:5
+  Rendered articles/show.html.erb within layouts/application (Duration: 868.9ms | Allocations: 133015)
+Completed 500 Internal Server Error in 901ms (ActiveRecord: 0.8ms | Allocations: 137497)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `thumb' for #<#<Class:0x00007fd67421bd38>:0x0000556ed58b4950>):
+     9: 
+    10: <p>
+    11:   <%if @article.image.exists?%>
+    12:     <%= image_tag @article.image.url(thumb) %>
+    13:   <%end%>
+    14: </p>
+    15: <p><%= @article.body %></p>
+  
+app/views/articles/show.html.erb:12
+Started GET "/articles/1" for ::1 at 2020-11-04 17:48:38 +0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:8:in `show'
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:5
+  Rendered articles/show.html.erb within layouts/application (Duration: 502.9ms | Allocations: 126821)
+Completed 500 Internal Server Error in 511ms (ActiveRecord: 0.5ms | Allocations: 127835)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `thumb' for #<#<Class:0x00007fd67421bd38>:0x0000556ed4589010>):
+     9: 
+    10: <p>
+    11:   <%if @article.image.exists?%>
+    12:     <%= image_tag @article.image.url(:thumb) %>
+    13:   <%end%>
+    14: </p>
+    15: <p><%= @article.body %></p>
+  
+app/views/articles/show.html.erb:12
+Started GET "/articles/" for ::1 at 2020-11-04 17:49:28 +0200
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:4
+  Rendered articles/index.html.erb within layouts/application (Duration: 42.3ms | Allocations: 1235)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 67ms (Views: 64.9ms | ActiveRecord: 0.2ms | Allocations: 5683)
+
+
+Started GET "/articles/1" for ::1 at 2020-11-04 17:49:30 +0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:8:in `show'
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:5
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:16
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:17
+  Rendered collection of articles/_comment.html.erb [3 times] (Duration: 19.4ms | Allocations: 378)
+  Rendered comments/_form.html.erb (Duration: 9.9ms | Allocations: 755)
+  Rendered articles/show.html.erb within layouts/application (Duration: 55.2ms | Allocations: 6215)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 74ms (Views: 67.1ms | ActiveRecord: 1.0ms | Allocations: 10325)
+
+
+Started GET "/system/articles/images/000/000/001/medium/carbon_%284%29.png?1604503713" for ::1 at 2020-11-04 17:49:31 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/system/articles/images/000/000/001/medium/carbon_%284%29.png"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/articles/1" for ::1 at 2020-11-04 17:49:42 +0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:8:in `show'
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:5
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:16
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:17
+  Rendered collection of articles/_comment.html.erb [3 times] (Duration: 3.0ms | Allocations: 365)
+  Rendered comments/_form.html.erb (Duration: 3.7ms | Allocations: 656)
+  Rendered articles/show.html.erb within layouts/application (Duration: 30.3ms | Allocations: 4742)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 49ms (Views: 42.5ms | ActiveRecord: 1.2ms | Allocations: 9715)
+
+
+Started GET "/articles/1" for ::1 at 2020-11-04 17:49:52 +0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:8:in `show'
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:5
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:16
+  [1m[36mComment Load (6.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:17
+  Rendered collection of articles/_comment.html.erb [3 times] (Duration: 3.0ms | Allocations: 368)
+  Rendered comments/_form.html.erb (Duration: 3.3ms | Allocations: 656)
+  Rendered articles/show.html.erb within layouts/application (Duration: 45.1ms | Allocations: 4748)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 62ms (Views: 49.5ms | ActiveRecord: 7.0ms | Allocations: 9726)
+
+
+Started GET "/system/articles/images/000/000/001/thumb/carbon_%284%29.png?1604503713" for ::1 at 2020-11-04 17:49:52 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/system/articles/images/000/000/001/thumb/carbon_%284%29.png"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.6) lib/puma/configuration.rb:228:in `call'
+puma (4.3.6) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.6) lib/puma/server.rb:472:in `process_client'
+puma (4.3.6) lib/puma/server.rb:328:in `block in run'
+puma (4.3.6) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/articles/1" for ::1 at 2020-11-04 17:56:47 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:8:in `show'
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:5
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:16
+  [1m[36mComment Load (1.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:17
+  Rendered collection of articles/_comment.html.erb [3 times] (Duration: 111.4ms | Allocations: 365)
+  Rendered comments/_form.html.erb (Duration: 71.7ms | Allocations: 656)
+  Rendered articles/show.html.erb within layouts/application (Duration: 335.4ms | Allocations: 4779)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 707ms (Views: 642.9ms | ActiveRecord: 3.2ms | Allocations: 9789)
+
+
+Started GET "/articles/1/edit" for ::1 at 2020-11-04 17:57:44 +0200
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (8.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:32:in `edit'
+  Rendering articles/edit.html.erb within layouts/application
+  [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/models/article.rb:9:in `tag_list'
+  Rendered articles/_form.html.erb (Duration: 127.2ms | Allocations: 2849)
+  Rendered articles/edit.html.erb within layouts/application (Duration: 148.3ms | Allocations: 3124)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 173ms (Views: 157.0ms | ActiveRecord: 8.7ms | Allocations: 7295)
+
+
+Started PATCH "/articles/1" for ::1 at 2020-11-04 17:58:08 +0200
+Processing by ArticlesController#update as HTML
+  Parameters: {"authenticity_token"=>"Esvx890fq0/mtA7X49Z7ZXZccYjtt3Tin/vTTwQasqKNfrbb3U+xfD7lkXqrHLBjIng+bU1Eqb3bIvBc/AaMhQ==", "article"=>{"title"=>"This was our first article # 1", "body"=>"This is the text for my article, woo hoo!", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007fd674f2d738 @tempfile=#<Tempfile:/tmp/RackMultipart20201104-10930-1aa2h3b.png>, @original_filename="Screenshot from 2020-09-23 10-30-06.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"article[image]\"; filename=\"Screenshot from 2020-09-23 10-30-06.png\"\r\nContent-Type: image/png\r\n">, "tag_list"=>"tag2"}, "commit"=>"Update Article", "id"=>"1"}
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:35:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/article.rb:13:in `block in tag_list='
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."name" = ? LIMIT ?[0m  [["name", "tag2"], ["LIMIT", 1]]
+  ↳ app/models/article.rb:13:in `block in tag_list='
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/models/article.rb:14:in `tag_list='
+[paperclip] Trying to link /tmp/RackMultipart20201104-10930-1aa2h3b.png to /tmp/7f103860a5436e30db4f9f4dcb6299a320201104-10930-11ioquk.png
+[paperclip] Trying to link /tmp/7f103860a5436e30db4f9f4dcb6299a320201104-10930-11ioquk.png to /tmp/7b0bac82e741076ca05b0e345a59e82f20201104-10930-ep33v7.png
+Command :: file -b --mime '/tmp/7b0bac82e741076ca05b0e345a59e82f20201104-10930-ep33v7.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/7f103860a5436e30db4f9f4dcb6299a320201104-10930-11ioquk.png[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/7f103860a5436e30db4f9f4dcb6299a320201104-10930-11ioquk.png[0]'
+Command :: convert '/tmp/7f103860a5436e30db4f9f4dcb6299a320201104-10930-11ioquk.png[0]' -auto-orient -resize "300x300>" '/tmp/12b64d3c8693c548811d8515ef757d9120201104-10930-14em4aj'
+[paperclip] Trying to link /tmp/12b64d3c8693c548811d8515ef757d9120201104-10930-14em4aj to /tmp/540ab8d324d20069a9c44f6f7fbc313b20201104-10930-1edqqfi
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/7f103860a5436e30db4f9f4dcb6299a320201104-10930-11ioquk.png[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/7f103860a5436e30db4f9f4dcb6299a320201104-10930-11ioquk.png[0]'
+Command :: convert '/tmp/7f103860a5436e30db4f9f4dcb6299a320201104-10930-11ioquk.png[0]' -auto-orient -resize "100x100>" '/tmp/12b64d3c8693c548811d8515ef757d9120201104-10930-1rp3zs0'
+[paperclip] Trying to link /tmp/12b64d3c8693c548811d8515ef757d9120201104-10930-1rp3zs0 to /tmp/ef1bb8eab2b4b54a4738972b68ab592620201104-10930-6e5apq
+[paperclip] Trying to link /tmp/7f103860a5436e30db4f9f4dcb6299a320201104-10930-11ioquk.png to /tmp/7b0bac82e741076ca05b0e345a59e82f20201104-10930-ew90u8.png
+Command :: file -b --mime '/tmp/7b0bac82e741076ca05b0e345a59e82f20201104-10930-ew90u8.png'
+  [1m[36mArticle Update (5.5ms)[0m  [1m[33mUPDATE "articles" SET "image_file_name" = ?, "image_file_size" = ?, "image_updated_at" = ?, "updated_at" = ? WHERE "articles"."id" = ?[0m  [["image_file_name", "Screenshot_from_2020-09-23_10-30-06.png"], ["image_file_size", 253340], ["image_updated_at", "2020-11-04 15:58:08.234762"], ["updated_at", "2020-11-04 15:58:09.898031"], ["id", 1]]
+  ↳ app/controllers/articles_controller.rb:36:in `update'
+[paperclip] deleting /home/blaise/Documents/Blaise/Microverse/Rails/blog-rails-app/public/system/articles/images/000/000/001/original/carbon_(4).png
+  [1m[35m (133.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/articles_controller.rb:36:in `update'
+Redirected to http://localhost:3000/articles/1
+Completed 302 Found in 1883ms (ActiveRecord: 139.5ms | Allocations: 18096)
+
+
+Started GET "/articles/1" for ::1 at 2020-11-04 17:58:10 +0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:8:in `show'
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:5
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:16
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:17
+  Rendered collection of articles/_comment.html.erb [3 times] (Duration: 1.6ms | Allocations: 245)
+  Rendered comments/_form.html.erb (Duration: 3.3ms | Allocations: 461)
+  Rendered articles/show.html.erb within layouts/application (Duration: 24.5ms | Allocations: 3837)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 47ms (Views: 41.3ms | ActiveRecord: 1.3ms | Allocations: 8148)
+
+
+Started GET "/articles/1" for ::1 at 2020-11-04 17:58:25 +0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:8:in `show'
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:5
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:16
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:17
+  Rendered collection of articles/_comment.html.erb [3 times] (Duration: 7.4ms | Allocations: 366)
+  Rendered comments/_form.html.erb (Duration: 6.7ms | Allocations: 656)
+  Rendered articles/show.html.erb within layouts/application (Duration: 44.4ms | Allocations: 4735)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 71ms (Views: 64.5ms | ActiveRecord: 1.3ms | Allocations: 9716)
+
+
+Started GET "/articles/1" for ::1 at 2020-11-04 17:58:48 +0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:8:in `show'
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:5
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:16
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:17
+  Rendered collection of articles/_comment.html.erb [3 times] (Duration: 4.7ms | Allocations: 365)
+  Rendered comments/_form.html.erb (Duration: 3.5ms | Allocations: 656)
+  Rendered articles/show.html.erb within layouts/application (Duration: 38.1ms | Allocations: 4727)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 64ms (Views: 55.9ms | ActiveRecord: 2.6ms | Allocations: 9701)
+
+
+Started GET "/articles/1" for ::1 at 2020-11-04 17:58:58 +0200
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:8:in `show'
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:5
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:16
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:17
+  Rendered collection of articles/_comment.html.erb [3 times] (Duration: 2.4ms | Allocations: 365)
+  Rendered comments/_form.html.erb (Duration: 8.1ms | Allocations: 656)
+  Rendered articles/show.html.erb within layouts/application (Duration: 41.4ms | Allocations: 4731)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 75ms (Views: 69.8ms | ActiveRecord: 1.4ms | Allocations: 9689)
+
+
